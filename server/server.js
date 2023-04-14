@@ -1,5 +1,7 @@
 import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
 import { ApolloServer, gql } from 'apollo-server';
+import { users, quotes } from './db/fakeData.js';
+
 
 // tag template literals format...
 // Blueprints || Schema
@@ -8,16 +10,26 @@ import { ApolloServer, gql } from 'apollo-server';
 // so every query has a dedicated "resolver"...
 const typeDefs = gql`
     type Query{
-        greet: String,
-        userName: String
+        # greet: String,
+        # userName: String
+        users:[User]
+    }
+
+    type User{
+        id:ID
+        fName:String
+        lName:String
+        email:String
+        password:String
     }
 `;
 
 
 const resolvers = {
     Query: {
-        greet: () => 'Hello World...',
-        userName: () => 'Taiseen',
+        // greet: () => 'Hello World...',
+        // userName: () => 'Taiseen',
+        users: () => users
     }
 };
 
