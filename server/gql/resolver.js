@@ -12,6 +12,15 @@ const resolvers = {
     User: {
         // in this (arg) we get parent object...
         quotes: (user) => quotes.filter(quote => quote.userId === user.id)
+    },
+    Mutation: {
+        createNewUser: (_, { newUser }) => {
+            const id = (users.length + 1).toString();
+            console.log(newUser);
+            console.log(id);
+            users.push({ id, ...newUser });
+            return users.find(user => user.id === id);
+        }
     }
 };
 

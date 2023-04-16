@@ -1,0 +1,14 @@
+mutation createUser($newUser:UserInfoInput!){
+  createNewUser(newUser:$newUser){
+    fName
+  }
+}
+
+{
+  "newUser":{
+    "fName" : "Seen",
+    "lName" : "Azam",
+    "email" : "taiseen@gmail.com",
+    "password" : "123456",
+  }
+}

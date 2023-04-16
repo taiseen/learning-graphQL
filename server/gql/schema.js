@@ -28,6 +28,18 @@ const typeDefs = gql`
         userId:ID
         quote:String
     }
-`;
+
+    type Mutation{
+        createNewUser(newUser:UserInfoInput!):User
+    }
+
+    input UserInfoInput{
+        fName:String!,
+        lName:String!,
+        email:String!,
+        password:String!
+    }
+
+`
 
 export default typeDefs;
