@@ -20,22 +20,22 @@ const typeDefs = gql`
 
     # Object Type Schema
     type User{
-        _id:ID
-        firstName:String
-        lastName:String
-        email:String
-        password:String
+        _id:ID!
+        firstName:String!
+        lastName:String!
+        email:String!
+        password:String!
         quotes:[Quote]
     }
 
     # Object Type Schema
     type Quote{
-        userId:ID
-        quote:String
+        userId:ID!
+        quote:String!
     }
 
     type Token{
-        token:String
+        token:String!
     }
 
     # Mutation Type Schema
