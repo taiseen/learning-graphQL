@@ -1,13 +1,13 @@
 export const users = [
     {
-        id: '1',
+        _id: '1',
         fName: 'Sam',
         lName: 'Jones',
         email: 'sam@gmail.com',
         password: '1234'
     },
     {
-        id: '2',
+        _id: '2',
         fName: 'Jon',
         lName: 'Do',
         email: 'jon@gmail.com',

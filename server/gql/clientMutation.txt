@@ -1,14 +1,38 @@
-mutation createUser($newUser:UserInfoInput!){
-  createNewUser(newUser:$newUser){
-    fName
+----------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
+
+mutation createUser($newUser: UserInfoInput!) {
+  newUser: createNewUser(newUser: $newUser) {
+    firstName
+  }
+}
+----------------------------------------------------------------------------------------
+{
+  "newUser":{
+    "firstName" : "Seen",
+    "lastName" : "Azam",
+    "email" : "taiseen@gmail.com",
+    "password" : "123456"
+  }
+}
+[last property no need (,) if provide, then its throw error]
+
+----------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
+
+mutation createUser($existingUser: LoginUserInput!) {
+  userLogin: loginExistingUser(existingUser: $existingUser) {
+			token
+  }
+}
+----------------------------------------------------------------------------------------
+{
+  "existingUser":{
+    "email" : "taiseen@gmail.com",
+    "password" : "1234506"
   }
 }
 
-{
-  "newUser":{
-    "fName" : "Seen",
-    "lName" : "Azam",
-    "email" : "taiseen@gmail.com",
-    "password" : "123456",
-  }
-}
+----------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
+

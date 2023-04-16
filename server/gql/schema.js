@@ -6,37 +6,58 @@ import { gql } from 'apollo-server';
 // client query is 'greet' & server response back as 'String'... from "resolvers"
 // so every query has a dedicated "resolver"...
 const typeDefs = gql`
+
+    # Query Type Schema
+    # just Read operation...
     type Query{
         # greet: String,
         # userName: String
-        user(id:ID!):User
+        user(_id:ID!):User
         users:[User]
         quotes:[Quote]
         userQuotes(userId:ID!):[Quote]
     }
 
+    # Object Type Schema
     type User{
-        id:ID
-        fName:String
-        lName:String
+        _id:ID
+        firstName:String
+        lastName:String
         email:String
         password:String
         quotes:[Quote]
     }
 
+    # Object Type Schema
     type Quote{
         userId:ID
         quote:String
     }
 
-    type Mutation{
-        createNewUser(newUser:UserInfoInput!):User
+    type Token{
+        token:String
     }
 
+    # Mutation Type Schema
+    # just Write operation...
+    # Create + Update + Delete... (all together)
+    type Mutation{
+        # method name + parameter input with type + return value
+        createNewUser(newUser:UserInfoInput!):User
+        loginExistingUser(existingUser:LoginUserInput!):Token
+    }
+
+    # Input Type Schema
     input UserInfoInput{
-        fName:String!,
-        lName:String!,
-        email:String!,
+        firstName:String!
+        lastName:String!
+        email:String!
+        password:String!
+    }
+
+    # Input Type Schema
+    input LoginUserInput{
+        email:String!
         password:String!
     }
 
