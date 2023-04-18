@@ -45,6 +45,7 @@ const typeDefs = gql`
         # method name + parameter input with type + return value
         createNewUser(newUser:UserInfoInput!):User
         loginExistingUser(existingUser:LoginUserInput!):Token
+        createQuote(quote:String!):String
     }
 
     # Input Type Schema

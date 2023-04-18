@@ -1,5 +1,6 @@
 import { users, quotes } from '../db/fakeData.js';
 import { JWT_SECRET } from '../utils/config.js';
+import Quote from '../models/Quote.js';
 import User from '../models/User.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
@@ -52,10 +53,20 @@ const resolvers = {
             }
 
             // encrypting user (_id) with JWT_SECRET & then we called it token...
+            // so, token encrypting with userId
             const token = jwt.sign({ userId: isUserExist._id }, JWT_SECRET);
 
             return { token } // must return token as an object...
+        },
+
+        createQuote: async (_, { quote }, { userId }) => {
+            if (!userId) throw new Error('You must be logged in...');
+
+            await new Quote({ quote, userId }).save();
+
+            return 'Quote created successfully...'
         }
+
     }
 
 };

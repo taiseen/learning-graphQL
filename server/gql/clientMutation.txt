@@ -36,3 +36,19 @@ mutation createUser($existingUser: LoginUserInput!) {
 ----------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------
 
+mutation createQuote($quote: String!) {
+  newQuote: createQuote(quote: $quote) 
+}
+----------------------------------------------------------------------------------------
+{
+  "quote": "Testing quote"
+}
+----------------------------------------------------------------------------------------
+{
+  "authorization" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDNjNTkyMWEwMjg1YmE2YzdlOTk1MTgiLCJpYXQiOjE2ODE4MDkyNjN9.LnBTYp8xlSBQjeUKi_BCXDNiEqvh4TVTAfl2FnvZ_Gc"
+}
+
+----------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
+
+
