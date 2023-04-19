@@ -2,7 +2,24 @@
 
 # GraphQL - learning from very basic
 
-## Yarn Packages:-
+
+## Client Side
+```
+yarn dev
+```
+
+
+## Client Side use 
+
+* [Materialize CSS](https://materializecss.com)
+
+## Server Side
+```
+yarn start
+```
+
+
+## Server Side - Yarn Packages:-
 |No| Package Name with Version | Purpose  |
 |--|---------------------------|----------|
 |1 | yarn add graphql@15.7.2   | GraphQL  |
