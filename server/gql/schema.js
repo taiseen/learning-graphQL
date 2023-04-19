@@ -14,8 +14,18 @@ const typeDefs = gql`
         # userName: String
         user(_id:ID!):User
         users:[User]
-        quotes:[Quote]
+        quotes:[QuoteWithIdName]
         userQuotes(userId:ID!):[Quote]
+    }
+
+    type QuoteWithIdName{
+        quote: String
+        userId: IdName    
+    }
+
+    type IdName{
+        _id: String
+        firstName: String
     }
 
     # Object Type Schema

@@ -20,7 +20,7 @@ const resolvers = {
         // Query from MongoDB
         users: async () => await User.find({}),
         user: async (_, { _id }) => await User.findOne({ _id }),
-        quotes: async () => await Quote.find({}),
+        quotes: async () => await Quote.find({}).populate('userId', '_id firstName'),
         userQuotes: async (_, { userId }) => await Quote.findOne({ userId }),
     },
 
