@@ -1,4 +1,3 @@
-import { users, quotes } from '../db/fakeData.js';
 import { JWT_SECRET } from '../utils/config.js';
 import Quote from '../models/Quote.js';
 import User from '../models/User.js';
@@ -11,15 +10,29 @@ const resolvers = {
     Query: {
         // greet: () => 'Hello World...',
         // userName: () => 'Taiseen',
-        user: (_, { _id }) => users.find(user => user._id === _id),
-        users: () => users,
-        quotes: () => quotes,
-        userQuotes: (_, { userId }) => quotes.filter(user => user.userId === userId),
+
+        // Query from Local Database
+        // user: (_, { _id }) => users.find(user => user._id === _id),
+        // users: () => users,
+        // quotes: () => quotes,
+        // userQuotes: (_, { userId }) => quotes.filter(user => user.userId === userId),
+
+        // Query from MongoDB
+        users: async () => await User.find({}),
+        user: async (_, { _id }) => await User.findOne({ _id }),
+        quotes: async () => await Quote.find({}),
+        userQuotes: async (_, { userId }) => await Quote.findOne({ userId }),
     },
 
     User: {
         // in this (arg) we get parent object...
-        quotes: (user) => quotes.filter(quote => quote.userId === user._id)
+
+        // Local Database Search Query...
+        // quotes: (user) => quotes.filter(quote => quote.userId === user._id),
+
+        // MongoDB Search Query...
+        // with user + his associated Quote is fetch from here...
+        quotes: async (user) => await Quote.find({ userId: user._id })
     },
 
     Mutation: {

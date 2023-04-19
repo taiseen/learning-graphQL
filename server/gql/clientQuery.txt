@@ -3,7 +3,7 @@
 query getAllUser {
   users {
     _id
-    fName
+    firstName
     email
   }
 }
@@ -20,7 +20,7 @@ query getAllQuote {
 query getAllUserWithQuote {
   users {
     _id
-    fName
+    firstName
     email
     quotes{
       userId
@@ -33,8 +33,8 @@ query getAllUserWithQuote {
 query getUserById {
   user(_id:1) {
     _id
-    fName
-    lName
+    firstName
+    lastName
     email
     quotes{
       quote
@@ -46,7 +46,7 @@ query getUserById {
 query getUserById($uId:ID!) {
   user(_id:$uId) {
     _id
-    fName
+    firstName
     email
   }
 }
@@ -68,7 +68,7 @@ query getQuotesByUserId($_id:ID!) {
 }
 --------------------------------------------
 {
-  "_id": "2"
+  "_id": "643c5921a0285ba6c7e99518"
 }
 --------------------------------------------
 --------------------------------------------
