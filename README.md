@@ -12,6 +12,8 @@ yarn dev
 ## Client Side use 
 
 * [Materialize CSS](https://materializecss.com)
+* [Robot Avatar](https://robohash.org)
+* React Router
 
 ## Server Side
 ```

@@ -1,10 +1,24 @@
-import { Login, Registration } from './components';
+import {
+  Login,
+  NavBar,
+  Profile,
+  AllQuotes,
+  CreateQuote,
+  Registration
+} from './components';
+
 
 const App = () => {
+
   return (
+
     <div>
+      <NavBar />
+      <AllQuotes />
       {/* <Login /> */}
-      <Registration />
+      {/* <Registration /> */}
+      {/* <Profile /> */}
+      {/* <CreateQuote /> */}
     </div>
   )
 }
