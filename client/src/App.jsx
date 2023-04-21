@@ -3,7 +3,6 @@ import { NavBar } from "./components"
 import { routes } from "./routes";
 
 
-
 const App = () => {
 
   const component = useRoutes(routes);

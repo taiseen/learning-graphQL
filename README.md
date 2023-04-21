@@ -8,18 +8,23 @@
 yarn dev
 ```
 
-
-## Client Side use 
+## Client Side - Yarn Packages:-
+|No| Package Name with Version | Purpose  |
+|--|---------------------------|----------|
+|1 | yarn add react-router-dom | For Page Navigation  |
+|2 | yarn add graphql@15.7.2   | GraphQL  |
+|3 | yarn add @apollo/client@3.4.17   | Apollo Client  |
 
 * [Materialize CSS](https://materializecss.com)
 * [Robot Avatar](https://robohash.org)
-* React Router
+
+<br />
+
 
 ## Server Side
 ```
 yarn start
 ```
-
 
 ## Server Side - Yarn Packages:-
 |No| Package Name with Version | Purpose  |

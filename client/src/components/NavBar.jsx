@@ -1,7 +1,19 @@
-import { Link } from 'react-router-dom';
+import { clearToken, getToken } from '../helper/localStorage';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const NavBar = () => {
+
+    const navigate = useNavigate();
+    const token = getToken();
+
+
+    const handleLogOut = () => {
+        navigate('/login');
+        clearToken();
+    }
+
+
     return (
         <nav style={{ marginBottom: '40px' }}>
 
@@ -12,18 +24,21 @@ const NavBar = () => {
                 </Link>
 
                 <ul id="nav-mobile" className="right">
-                    <li>
-                        <Link to='/login'>Login</Link>
-                    </li>
-                    <li>
-                        <Link to='/registration'>Registration</Link>
-                    </li>
-                    <li>
-                        <Link to='/profile'>Profile</Link>
-                    </li>
-                    <li>
-                        <Link to='/crateQuote'>Crate Quote</Link>
-                    </li>
+                    {
+                        token
+                            ? (
+                                <>
+                                    <li><Link to='/profile'>Profile</Link></li>
+                                    <li><Link to='/crateQuote'>Crate Quote</Link></li>
+                                    <button onClick={handleLogOut}>Logout</button>
+                                </>
+                            ) : (
+                                <>
+                                    <li><Link to='/login'>Login</Link></li>
+                                    <li><Link to='/registration'>Registration</Link></li>
+                                </>
+                            )
+                    }
                 </ul>
 
             </div>

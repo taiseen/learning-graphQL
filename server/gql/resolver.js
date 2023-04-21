@@ -39,7 +39,7 @@ const resolvers = {
         createNewUser: async (_, { newUser }) => {
             const isUserExist = await User.findOne({ email: newUser.email })
             if (isUserExist) {
-                throw new Error(`User ${newUser.email} already exist...`);
+                throw new Error(`${newUser.email} already exist...`);
             }
 
             const hashPass = await bcrypt.hash(newUser.password, 12); // salting round --> 12
@@ -57,7 +57,7 @@ const resolvers = {
 
             const isUserExist = await User.findOne({ email: existingUser.email })
             if (!isUserExist) {
-                throw new Error(`User ${existingUser.email} not exist...`);
+                throw new Error(`${existingUser.email} not exist...`);
             }
 
             const isPassMatch = await bcrypt.compare(existingUser.password, isUserExist.password)

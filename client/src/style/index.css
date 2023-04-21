@@ -25,6 +25,18 @@ input:focus {
 }
 
 .createQuoteForm button {
-    align-self     : flex-end;
-    font-size      : 20px;
+    align-self: flex-end;
+    font-size : 20px;
+}
+
+.loading {
+    text-align: center;
+    color     : tomato;
+}
+
+.pageNotFound {
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items    : center;
 }

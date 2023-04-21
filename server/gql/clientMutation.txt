@@ -20,7 +20,7 @@ mutation createUser($newUser: UserInfoInput!) {
 ----------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------
 
-mutation createUser($existingUser: LoginUserInput!) {
+mutation loginUser($existingUser: LoginUserInput!) {
   userLogin: loginExistingUser(existingUser: $existingUser) {
 			token
   }
