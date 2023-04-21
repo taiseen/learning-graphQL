@@ -21,8 +21,8 @@ const Registration = () => {
                 <input type="text" name="firstName" placeholder='First Name' onChange={handelUserInput} required />
                 <input type="text" name="lastName" placeholder='Last Name' onChange={handelUserInput} required />
                 <input type="email" name="email" placeholder='Email' onChange={handelUserInput} required />
-                <input type="password" name="password" placeholder='Password' onChange={handelUserInput} required />
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <input type="password" name="password" placeholder='Password' onChange={handelUserInput} required autoComplete="on" />
+                <div className='displayFlex'>
                     <button className='btn deep-purple' type='submit'>Register</button>
                     <Link to='/login'><p>Already have an account?</p></Link>
                 </div>

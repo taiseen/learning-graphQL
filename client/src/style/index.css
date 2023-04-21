@@ -6,3 +6,25 @@ input:focus {
     border-bottom: 2px solid #673ab7 !important;
     box-shadow   : none !important;
 }
+
+.displayFlex {
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+}
+
+.imgLogo {
+    margin-top: 25px;
+    border    : 1px solid;
+}
+
+.createQuoteForm {
+    display       : flex;
+    flex-direction: column;
+    gap           : 5px;
+}
+
+.createQuoteForm button {
+    align-self     : flex-end;
+    font-size      : 20px;
+}

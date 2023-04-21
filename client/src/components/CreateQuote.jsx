@@ -11,7 +11,7 @@ const CreateQuote = () => {
 
     return (
         <div className='container my-container'>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='createQuoteForm'>
                 <input
                     required
                     type="text"
@@ -23,7 +23,6 @@ const CreateQuote = () => {
                 <button
                     type='submit'
                     className="btn-floating btn cyan pulse"
-                    style={{ fontSize: '22px' }}
                 >
                     +
                 </button>

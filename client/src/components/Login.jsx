@@ -20,9 +20,9 @@ const Login = () => {
 
             <form onSubmit={handelFormSubmit}>
                 <input type="email" name="email" placeholder='Email' onChange={handelUserInput} required />
-                <input type="password" name="password" placeholder='Password' onChange={handelUserInput} required />
+                <input type="password" name="password" placeholder='Password' onChange={handelUserInput} required autoComplete="on" />
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div className='displayFlex'>
                     <Link to='/registration'><p>Don't have an account?</p></Link>
                     <button className='btn deep-purple' type='submit'>Login</button>
                 </div>
