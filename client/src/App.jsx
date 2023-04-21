@@ -1,24 +1,20 @@
-import {
-  Login,
-  NavBar,
-  Profile,
-  AllQuotes,
-  CreateQuote,
-  Registration
-} from './components';
+import { useRoutes } from "react-router"
+import { NavBar } from "./components"
+import { routes } from "./routes";
+
 
 
 const App = () => {
 
+  const component = useRoutes(routes);
+  
   return (
 
     <div>
       <NavBar />
-      <AllQuotes />
-      {/* <Login /> */}
-      {/* <Registration /> */}
-      {/* <Profile /> */}
-      {/* <CreateQuote /> */}
+      {
+        component
+      }
     </div>
   )
 }

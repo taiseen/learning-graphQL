@@ -1,6 +1,9 @@
+import { Link } from 'react-router-dom';
 import { useState } from 'react'
 
+
 const Registration = () => {
+
     const [registrationInfo, setRegistrationInfo] = useState({});
 
     const handelUserInput = (e) => setRegistrationInfo(pre => ({ ...pre, [e.target.name]: e.target.value }))
@@ -8,7 +11,6 @@ const Registration = () => {
     const handelFormSubmit = (e) => {
         e.preventDefault();
         console.log(registrationInfo);
-        // setLoginInfo({})
     }
 
     return (
@@ -20,7 +22,10 @@ const Registration = () => {
                 <input type="text" name="lastName" placeholder='Last Name' onChange={handelUserInput} required />
                 <input type="email" name="email" placeholder='Email' onChange={handelUserInput} required />
                 <input type="password" name="password" placeholder='Password' onChange={handelUserInput} required />
-                <button className='btn deep-purple' type='submit'>Register</button>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <button className='btn deep-purple' type='submit'>Register</button>
+                    <Link to='/login'><p>Already have an account?</p></Link>
+                </div>
             </form>
         </div>
     )
