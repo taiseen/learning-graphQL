@@ -11,9 +11,11 @@ const App = () => {
   const component = useRoutes(routes);
   const token = getToken();
 
+  
   useEffect(() => {
     if (!token) navigate('/login');
   }, [token]);
+
 
   return (
 

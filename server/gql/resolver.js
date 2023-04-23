@@ -21,7 +21,11 @@ const resolvers = {
         users: async () => await User.find({}),
         user: async (_, { _id }) => await User.findOne({ _id }),
         quotes: async () => await Quote.find({}).populate('userId', '_id firstName'),
-        userQuotes: async (_, { userId }) => await Quote.findOne({ userId }),
+        userQuotes: async (_, { userId }) => await Quote.find({ userId }),
+        userProfile: async (_, __, { userId }) => {
+            if (!userId) throw new Error('You must be logged in...');
+            return await User.findOne({ _id: userId });
+        },
     },
 
     User: {
@@ -65,11 +69,10 @@ const resolvers = {
                 throw new Error(`User email & password is invalid...`);
             }
 
-            console.log(isUserExist);
             // encrypting user (_id) with JWT_SECRET & then we called it token...
             // so, token encrypting with userId
             const token = jwt.sign({ userId: isUserExist._id }, JWT_SECRET);
-            console.log('login id ==> ',isUserExist._id);
+
             return { token } // must return token as an object...
         },
 

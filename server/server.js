@@ -4,17 +4,13 @@ import { ApolloServer } from 'apollo-server';
 import mongoDB from './connection/mongoDB.js';
 import resolvers from './gql/resolver.js';
 import typeDefs from './gql/schema.js';
-import jwt from 'jsonwebtoken'
-
-
-// MongoDB Connection Start...
-mongoDB();
+import jwt from 'jsonwebtoken';
 
 
 // common middleware for all resolvers...
 const context = ({ req }) => {
     const { authorization } = req.headers;
-    console.log(req.headers);
+
     if (authorization) {
         // by token decryption get userId
         const { userId } = jwt.verify(authorization, JWT_SECRET);
@@ -25,9 +21,9 @@ const context = ({ req }) => {
 
 // server instance...
 const apolloServer = new ApolloServer({
-    context,   // middleware...
     typeDefs,  // Query & Mutation - type definitions...
     resolvers, // Resolver functions to resolve this Query & Mutation... through DB
+    context,   // middleware...
     plugins: [
         // like REST Api PostMan, its called PlayGround
         ApolloServerPluginLandingPageGraphQLPlayground()
@@ -37,3 +33,7 @@ const apolloServer = new ApolloServer({
 
 // Default Port 4000
 apolloServer.listen().then(({ url }) => { console.log(url) });
+
+
+// MongoDB Connection Start...
+mongoDB();
