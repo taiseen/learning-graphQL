@@ -65,10 +65,11 @@ const resolvers = {
                 throw new Error(`User email & password is invalid...`);
             }
 
+            console.log(isUserExist);
             // encrypting user (_id) with JWT_SECRET & then we called it token...
             // so, token encrypting with userId
             const token = jwt.sign({ userId: isUserExist._id }, JWT_SECRET);
-
+            console.log('login id ==> ',isUserExist._id);
             return { token } // must return token as an object...
         },
 

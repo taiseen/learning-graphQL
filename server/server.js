@@ -14,6 +14,7 @@ mongoDB();
 // common middleware for all resolvers...
 const context = ({ req }) => {
     const { authorization } = req.headers;
+    console.log(req.headers);
     if (authorization) {
         // by token decryption get userId
         const { userId } = jwt.verify(authorization, JWT_SECRET);

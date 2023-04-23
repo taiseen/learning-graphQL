@@ -15,11 +15,11 @@ const NavBar = () => {
 
 
     return (
-        <nav style={{ marginBottom: '40px' }}>
+        <nav className='navBar'>
 
             <div className="nav-wrapper deep-purple">
 
-                <Link to='/' className="brand-logo left" style={{ paddingLeft: '15px' }}>
+                <Link to='/' className="brand-logo left">
                     Quote App
                 </Link>
 
@@ -30,7 +30,7 @@ const NavBar = () => {
                                 <>
                                     <li><Link to='/profile'>Profile</Link></li>
                                     <li><Link to='/crateQuote'>Crate Quote</Link></li>
-                                    <button onClick={handleLogOut}>Logout</button>
+                                    <button className='red btn' onClick={handleLogOut}>Logout</button>
                                 </>
                             ) : (
                                 <>

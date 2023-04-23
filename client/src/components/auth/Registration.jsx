@@ -2,6 +2,7 @@ import { CREATE_NEW_USER } from '../../gql/mutations';
 import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { useEffect, useState } from 'react';
+import { Error, Success } from '../Status';
 
 
 const Registration = () => {
@@ -10,7 +11,7 @@ const Registration = () => {
     const [registrationInfo, setRegistrationInfo] = useState({});
 
 
-    const [registerNewUser, { loading, error, data }] = useMutation(CREATE_NEW_USER);
+    const [registerNewUser, { error, data }] = useMutation(CREATE_NEW_USER);
     const { email } = data?.createNewUser ?? {}
 
 
@@ -31,7 +32,7 @@ const Registration = () => {
         if (email) {
             setTimeout(() => {
                 navigate('/login');
-            }, 3000);
+            }, 5000);
         }
     }, [email]);
 
@@ -40,14 +41,9 @@ const Registration = () => {
         <div className='container my-container'>
 
             {
-                error && <div className='red card-panel'>{error?.message}</div>
-            }
-
-            {
-                email &&
-                <div className='green card-panel'>
-                    {email} create successfully... 👍
-                </div>
+                error && <Error error={error} />
+                ||
+                email && <Success email={email} />
             }
 
             <h5>User Registration!</h5>

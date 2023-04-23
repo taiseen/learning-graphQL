@@ -9,9 +9,10 @@ const AllQuotes = () => {
     const { loading, error, data } = useQuery(GET_ALL_QUOTES);
 
     if (loading) return <h1 className='loading'>Loading...</h1>;
-    if (!data.quotes.length) return <h1 className='loading'>No quotes are available...</h1>;
+    if (!data?.quotes?.length) return <h1 className='loading'>No quotes are available...</h1>;
     if (error) return console.log(error);
 
+    // console.log(data);
 
     return (
         <div className='container'>
@@ -19,7 +20,7 @@ const AllQuotes = () => {
                 data.quotes.map(({ quote, userId }, idx) =>
                     <blockquote key={idx}>
                         <h6>{quote}</h6>
-                        <p className='right-align'>~{userId.firstName}</p>
+                        <p className='right-align'>~{userId?.firstName}</p>
                     </blockquote>
                 )
             }
