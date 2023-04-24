@@ -41,6 +41,7 @@ const typeDefs = gql`
 
     # Object Type Schema
     type Quote{
+        _id:ID!
         userId:ID!
         quote:String!
     }
@@ -57,6 +58,7 @@ const typeDefs = gql`
         createNewUser(newUser:UserInfoInput!):User
         loginExistingUser(existingUser:LoginUserInput!):Token
         createQuote(quote:String!):String
+        deleteQuote(id:ID!):String
     }
 
     # Input Type Schema

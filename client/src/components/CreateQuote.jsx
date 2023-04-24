@@ -1,4 +1,5 @@
 import { Error, Loading, Success } from './Status';
+import { reRunQueries } from '../gql/reRunQueries';
 import { CREATE_QUOTE } from '../gql/mutations';
 import { useMutation } from '@apollo/client';
 import { useState } from 'react';
@@ -11,10 +12,7 @@ const CreateQuote = () => {
 
     const [createNewQuote, { loading, error, data }] = useMutation(CREATE_QUOTE, {
         // this is for auto refetch updated values & discard last cached values...
-        refetchQueries: [
-            'getAllQuote', // <== re-run this query again...
-            'getUserProfile',
-        ]
+        refetchQueries: reRunQueries // <== re-fetch this list of queries...
     });
 
 
@@ -28,12 +26,12 @@ const CreateQuote = () => {
     }
 
 
+    if (loading) return <Loading />
+
     return (
         <div className='container my-container'>
 
             {
-                loading && <Loading />
-                ||
                 error && <Error error={error} />
                 ||
                 data && <Success data={data} />

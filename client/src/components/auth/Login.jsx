@@ -41,13 +41,12 @@ const Login = () => {
         });
     }
 
+    if (loading) return <Loading />
 
     return (
         <div className='container my-container'>
 
             {
-                loading && <Loading />
-                ||
                 error && <Error error={error} />
             }
 

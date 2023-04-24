@@ -1,21 +1,38 @@
+import { useMutation, useQuery } from "@apollo/client";
+import { reRunQueries } from "../gql/reRunQueries";
 import { GET_USER_PROFILE } from '../gql/queries';
-import { useQuery } from "@apollo/client";
+import { DELETE_QUOTE } from '../gql/mutations';
 import { Error, Loading } from './Status';
 
 
+
 const Profile = () => {
+
+    const [deleteBook] = useMutation(DELETE_QUOTE, {
+        // this is for auto refetch updated values & discard last cached values...
+        refetchQueries: reRunQueries // <== re-fetch this list of queries...
+    });
 
     const { loading, error, data } = useQuery(GET_USER_PROFILE);
 
     const { firstName, lastName, email, quotes } = data?.userProfile ?? {};
 
+    const handleDelete = (id) => {
+        deleteBook({
+            variables: { id }
+        })
+    }
+
+
+    // window.location.reload(); // This will refresh the browser
+
+
+    if (loading) return <Loading />
 
     return (
         <div className='container my-container'>
 
             {
-                loading && <Loading />
-                ||
                 error && <Error error={error} />
             }
 
@@ -29,15 +46,15 @@ const Profile = () => {
             </div>
 
             <hr />
-            
+
             <p>My Created Quote List:- </p>
 
             {
-                quotes?.map(({ quote }, idx) =>
-                    <blockquote key={idx}>
+                quotes?.map(({ quote, _id }) =>
+                    <blockquote key={_id}>
                         <h6>{quote}</h6>
-                        <p className='right-align'>
-                            <span>Delete</span>
+                        <p className='deleteBtn'>
+                            <span onClick={() => handleDelete(_id)}>Delete</span>
                         </p>
                     </blockquote>
                 )

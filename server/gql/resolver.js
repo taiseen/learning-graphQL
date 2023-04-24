@@ -82,6 +82,11 @@ const resolvers = {
             await new Quote({ quote, userId }).save();
 
             return 'Quote created successfully...'
+        },
+
+        deleteQuote: async (_, { id }) => {
+            await Quote.findByIdAndDelete({ _id: id });
+            return id;
         }
 
     }
