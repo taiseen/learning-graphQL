@@ -1,10 +1,11 @@
 import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
-import { JWT_SECRET } from './utils/config.js';
 import { ApolloServer } from 'apollo-server';
 import mongoDB from './connection/mongoDB.js';
 import resolvers from './gql/resolver.js';
 import typeDefs from './gql/schema.js';
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+dotenv.config();
 
 
 // common middleware for all resolvers...
@@ -13,7 +14,7 @@ const context = ({ req }) => {
 
     if (authorization) {
         // by token decryption get userId
-        const { userId } = jwt.verify(authorization, JWT_SECRET);
+        const { userId } = jwt.verify(authorization, process.env.JWT_SECRET);
         return { userId };
     }
 }

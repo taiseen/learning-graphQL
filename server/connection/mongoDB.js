@@ -1,4 +1,3 @@
-import { MONGODB_URI } from "../utils/config.js";
 import mongoose from "mongoose";
 
 const mongoDB = () => {
@@ -6,7 +5,7 @@ const mongoDB = () => {
     try {
         // Remove console warning...
         mongoose.set('strictQuery', true);
-        mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+        mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
         console.log("Connected To MongoDB ==> OK ✅");
     } catch (error) {

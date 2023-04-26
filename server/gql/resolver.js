@@ -1,4 +1,3 @@
-import { JWT_SECRET } from '../utils/config.js';
 import Quote from '../models/Quote.js';
 import User from '../models/User.js';
 import jwt from 'jsonwebtoken';
@@ -71,7 +70,7 @@ const resolvers = {
 
             // encrypting user (_id) with JWT_SECRET & then we called it token...
             // so, token encrypting with userId
-            const token = jwt.sign({ userId: isUserExist._id }, JWT_SECRET);
+            const token = jwt.sign({ userId: isUserExist._id }, process.env.JWT_SECRET);
 
             return { token } // must return token as an object...
         },
